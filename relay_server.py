@@ -8,9 +8,8 @@ app = FastAPI()
 API_KEY = os.getenv("RELAY_SECRET")
 
 SUPPORTED_APIS = {
-    "coinalyze": "https://coinalyze.net/api/v1/markets?key=a9d7082b-cd41-4725-9930-22c8147727e1"
+    "coinalyze": "https://httpbin.org/get"  # public endpoint
 }
-
 @app.middleware("http")
 async def auth(request: Request, call_next):
     if request.headers.get("x-relay-key") != API_KEY:
