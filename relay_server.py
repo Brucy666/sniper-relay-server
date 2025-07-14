@@ -8,7 +8,7 @@ app = FastAPI()
 API_KEY = os.getenv("RELAY_SECRET")
 
 SUPPORTED_APIS = {
-    "coinalyze": "https://coinalyze.net/api/...",  # example URL
+    ""coinalyze": "https://coinalyze.net/api/v1/markets?key=a9d7082b-cd41-4725-9930-22c8147727e1l;ike ",  # example URL
 }
 
 @app.middleware("http")
