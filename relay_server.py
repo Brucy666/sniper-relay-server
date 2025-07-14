@@ -8,7 +8,7 @@ app = FastAPI()
 API_KEY = os.getenv("RELAY_SECRET")
 
 SUPPORTED_APIS = {
-    ""coinalyze": "https://coinalyze.net/api/v1/markets?key=a9d7082b-cd41-4725-9930-22c8147727e1l;ike ",  # example URL
+    "coinalyze": "https://coinalyze.net/api/v1/markets?key=a9d7082b-cd41-4725-9930-22c8147727e1"
 }
 
 @app.middleware("http")
@@ -21,6 +21,7 @@ async def auth(request: Request, call_next):
 async def relay(api_name: str):
     if api_name not in SUPPORTED_APIS:
         raise HTTPException(status_code=404, detail="Unknown API")
+
     url = SUPPORTED_APIS[api_name]
     async with httpx.AsyncClient() as client:
         resp = await client.get(url)
